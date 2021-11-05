@@ -8,13 +8,14 @@ import Movies from './pages/Movies';
 
 function App() {
   const [movies, setMovies] = useState(null);
-  const URL = '';
+  const URL = 'http://localhost:3000/movies';
   
   const getMovies = async () => {
     try {
     const movies = await fetch(URL).then(response => response.json())
     setMovies({movies})
-    } catch (errror) {
+    console.log(movies)
+    } catch (error) {
       console.log(error)
     }
   }
