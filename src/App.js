@@ -13,8 +13,7 @@ function App() {
   const getMovies = async () => {
     try {
     const movies = await fetch(URL).then(response => response.json())
-    setMovies({movies})
-    console.log(movies)
+    setMovies(movies)
     } catch (error) {
       console.log(error)
     }
@@ -26,10 +25,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<Home movies={movies}/>}/>
-        <Route path='/movies/:id' render={(rp) => (
-                    <Movies movies={movies} URL={URL}
-                    {...rp} />
-                )} />
+        <Route path='/movies/:id' element={<Movies movies={movies}/>} />
         <Route path='/watchlist' element={<WatchList movies={movies}/>}/>
         <Route path='/watching' element={<Watching movies={movies}/>}/>
       </Routes>
