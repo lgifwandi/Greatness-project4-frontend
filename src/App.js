@@ -11,10 +11,13 @@ function App() {
   const URL = '';
   
   const getMovies = async () => {
-    const response = await fetch(URL);
-    const data = await response.json();
-    setMovies(data);
-  };
+    try {
+    const movies = await fetch(URL).then(response => response.json())
+    setMovies({movies})
+    } catch (errror) {
+      console.log(error)
+    }
+  }
 
   useEffect(() => getMovies(), []);
 
