@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import {Wrapper, Button, Form} from './AddMovieForm-styled';
 
 const AddMovieForm = (props) => {
     const [formState, setFormState] = useState({
@@ -32,57 +33,63 @@ const AddMovieForm = (props) => {
 
 
     return(
-    <form onSubmit={handleSubmit}>
-        <input
-          onChange={handleChange}
-          name="title"
-          placeholder="Movie Title"
-          type="text"
-          value={formState.title}
-          id="title"
-         />
-         <input
-           onChange={handleChange}
-           name="description"
-           placeholder="Movie Description"
-           type="text"
-           value={formState.description}
-           id="description"
-        />
-        <input
-          onChange={handleChange}
-          name="movie_rating"
-          placeholder="Movie Rating"
-          type="text"
-          value={formState.movie_rating}
-          id="movie_rating"
-       />
-        <input
-          onChange={handleChange}
-          name="image"
-          placeholder="Image URL"
-          type="text"
-          value={formState.image}
-          id="image"
-       />
-        <input
-          onChange={handleChange}
-          name="release_date"
-          placeholder="Release Date"
-          type="text"
-          value={formState.release_date}
-          id="release_date"
-       />
-        <input
-          onChange={handleChange}
-          name="genre"
-          placeholder="Movie Genre"
-          type="text"
-          value={formState.genre}
-          id="genre"
-       />
-        <input type="submit" value='Add a Movie'/>
-      </form>
+        <Wrapper>
+            <form onSubmit={handleSubmit}>
+            <Form>
+                <input
+                onChange={handleChange}
+                name="title"
+                placeholder="Movie Title"
+                type="text"
+                value={formState.title}
+                id="title"
+                />
+                <input
+                onChange={handleChange}
+                name="description"
+                placeholder="Movie Description"
+                type="text"
+                value={formState.description}
+                id="description"
+                />
+                <input
+                onChange={handleChange}
+                name="movie_rating"
+                placeholder="Movie Rating"
+                type="text"
+                value={formState.movie_rating}
+                id="movie_rating"
+                />
+                <input
+                onChange={handleChange}
+                name="image"
+                placeholder="Image URL"
+                type="text"
+                value={formState.image}
+                id="image"
+                />
+                <input
+                onChange={handleChange}
+                name="release_date"
+                placeholder="Release Date"
+                type="text"
+                value={formState.release_date}
+                id="release_date"
+                />
+                <input
+                onChange={handleChange}
+                name="genre"
+                placeholder="Movie Genre"
+                type="text"
+                value={formState.genre}
+                id="genre"
+                />
+                <Button>
+                    <input type="submit" value='Add a Movie'/>
+                </Button>
+            </Form>
+        </form>
+      </Wrapper> 
     )
 };
 

@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Watching from './pages/Watching';
 import WatchList from './pages/WatchList';
 import Movies from './pages/Movies';
-import AddMovieForm from './components/AddMovieForm';
+import AddMovie from './pages/AddMovie';
 
 function App() {
   const [movies, setMovies] = useState(null);
@@ -57,7 +57,7 @@ function App() {
         <Route path='/movies/:id' element={<Movies movies={movies}/>} />
         <Route path='/watchlist' element={<WatchList movies={movies}/>}/>
         <Route path='/watching' element={<Watching movies={movies}/>}/>
-        <Route path='/addmovies' element={<AddMovieForm handleAdd={handleAdd}/>}/>
+        <Route path='/addmovies' element={<AddMovie handleAdd={handleAdd}/>}/>
       </Routes>
       
     </div>
