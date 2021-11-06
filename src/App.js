@@ -21,6 +21,21 @@ function App() {
 
   useEffect(() => getMovies(), []);
 
+  async function handleAdd(formInputs) {
+    try {
+      const movies = await fetch((URL), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'Application/json'
+        },
+        body: JSON.stringify(formInputs)
+      }).then(res => res.json())
+      setMovies({ movies });
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
   async function handleUpdate(reviewForm) {
     try {
       const {rating, review, id} = reviewForm;
