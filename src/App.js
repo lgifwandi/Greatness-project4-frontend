@@ -21,6 +21,19 @@ function App() {
 
   useEffect(() => getMovies(), []);
 
+  async function handleUpdate(reviewForm) {
+    try {
+      const {rating, review, id} = reviewForm;
+      const movies = await fetch(`${URL}/${id}`, {method: "PUT",
+    headers: {
+      'Content-Type': "Application/json"
+    }, body: JSON.stringify({review, rating})}).then(res => res.JSON())
+    setMovies({movies})
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className="App">
       <Routes>

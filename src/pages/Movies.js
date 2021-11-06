@@ -10,12 +10,7 @@ const Movies = (props) => {
              movie = item
          }
      })
-    
-    console.log(id)
-    console.log(movies)
-    console.log(movie)
    
-
     return(
         <div>
             <img src={movie.image} alt={movie.title}/>
