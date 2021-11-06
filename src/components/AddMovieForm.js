@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react';
-import Input from './Input';
 
 const AddMovieForm = (props) => {
     const [formState, setFormState] = useState({
@@ -20,73 +19,69 @@ const AddMovieForm = (props) => {
 
     function handleSubmit(event){
         event.preventDefault();
-        props.handleSubmit(formState);
+        props.handleAdd(formState);
+        setFormState({
+            title: '',
+            description: '',
+            image: '',
+            movie_rating: '',
+            release_date: '',
+            genre: ''
+          })
       };
 
-      useEffect(() => {
-          if(props.movie) {
-              setFormState({
-                title,
-                description,
-                image,
-                movie_rating,
-                release_date,
-                genre
-              })
-          }
-      }, [props.movies])
 
     return(
-<form onSubmit={handleSubmit}>
-        <Input
-          handleChange={handleChange}
+    <form onSubmit={handleSubmit}>
+        <input
+          onChange={handleChange}
           name="title"
           placeholder="Movie Title"
           type="text"
           value={formState.title}
           id="title"
          />
-         <Input
-           handleChange={handleChange}
-           name="Description"
+         <input
+           onChange={handleChange}
+           name="description"
            placeholder="Movie Description"
            type="text"
            value={formState.description}
            id="description"
         />
-        <Input
-          handleChange={handleChange}
+        <input
+          onChange={handleChange}
           name="movie_rating"
           placeholder="Movie Rating"
           type="text"
           value={formState.movie_rating}
           id="movie_rating"
        />
-        <Input
-          handleChange={handleChange}
+        <input
+          onChange={handleChange}
           name="image"
           placeholder="Image URL"
           type="text"
           value={formState.image}
           id="image"
        />
-        <Input
-          handleChange={handleChange}
+        <input
+          onChange={handleChange}
           name="release_date"
           placeholder="Release Date"
           type="text"
           value={formState.release_date}
           id="release_date"
        />
-        <Input
-          handleChange={handleChange}
+        <input
+          onChange={handleChange}
           name="genre"
           placeholder="Movie Genre"
           type="text"
           value={formState.genre}
           id="genre"
        />
-        <input type="submit" value={props.movie ? "update this movie" : "add a movie"}/>
+        <input type="submit" value='Add a Movie'/>
       </form>
     )
 };
