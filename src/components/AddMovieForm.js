@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import Input from './Input';
 
 const AddMovieForm = (props) => {
     const [formState, setFormState] = useState({
@@ -19,11 +20,7 @@ const AddMovieForm = (props) => {
 
     function handleSubmit(event){
         event.preventDefault();
-        if (props.movie) {
-          props.handleUpdate(formState);
-        } else {
-          props.handleSubmit(formState);
-        }
+        props.handleSubmit(formState);
       };
 
       useEffect(() => {
