@@ -1,7 +1,10 @@
-const Watching = () => {
+const Watching = (props) => {
+    console.log(props.movies)
     return(
-        <h1>Watched</h1>
+        <div>
+            <h1>Watching</h1>
+        </div>
     )
-};
+}
 
 export default Watching;

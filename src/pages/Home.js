@@ -1,21 +1,34 @@
-import { Link } from "react-router-dom";
 
+import {Link} from 'react-router-dom';
+import {Wrapper, Container} from "./Home-styled";
 import Nav from "../components/Nav/Nav.js";
 
-const Home = (props) => {
-  const loaded = () => {
-    return (
-      <div>
+const Home = ({movies}) => {
+
+    const loaded = () => {
+    return( 
+        <Wrapper>
         <Nav />
-      </div>
-    );
-  };
+            <h1>Your Movies</h1>
+            {movies.map(movie => 
+            (<Container key={movie.id}>
+                <Link to={`/movies/${movie.id}`}>
+                    <img src={movie.image} alt={movie.title}/>
+                </Link>
+            </Container>)
+        )}
+        </Wrapper>
+    )
+    }
+
 
   const loading = () => {
     return <h1>Loading...</h1>;
   };
 
-  return props.movies ? loaded() : loading();
+
+    return movies ? loaded() : loading();
+
 };
 
 export default Home;
