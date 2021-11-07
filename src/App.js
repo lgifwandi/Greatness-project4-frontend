@@ -1,3 +1,4 @@
+
 import './App.css';
 import {useEffect, useState} from 'react';
 import {Routes, Route} from 'react-router-dom';
@@ -7,18 +8,22 @@ import WatchList from './pages/WatchList';
 import Movies from './pages/Movies';
 import AddMovie from './pages/AddMovie';
 
+
+
 function App() {
   const [movies, setMovies] = useState(null);
-  const URL = 'http://localhost:3000/movies';
-  
+  const URL = "http://localhost:3000/movies";
+
   const getMovies = async () => {
     try {
+
     const movies = await fetch(URL).then(response => response.json())
     setMovies(movies)
+
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => getMovies(), []);
 
@@ -51,7 +56,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+      <div className="App">
       <Routes>
         <Route path='/' element={<Home movies={movies}/>}/>
         <Route path='/movies/:id' element={<Movies movies={movies}/>} />
@@ -59,7 +64,6 @@ function App() {
         <Route path='/watching' element={<Watching movies={movies}/>}/>
         <Route path='/addmovies' element={<AddMovie handleAdd={handleAdd}/>}/>
       </Routes>
-      
     </div>
   );
 }
