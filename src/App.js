@@ -17,6 +17,7 @@ function App() {
     try {
     const movies = await fetch(URL).then(response => response.json())
     setMovies(movies);
+    console.log(movies)
     } catch (error) {
       console.log(error);
     }
@@ -55,12 +56,42 @@ function App() {
 
   async function handleUpdate(reviewForm) {
     try {
-      const {rating, review, id} = reviewForm;
-      const movies = await fetch(`${URL}/${id}`, {method: "PUT",
+      const {completed, to_watch, review, id} = reviewForm;
+      const watchlist = await fetch(`${URL2}/${id}`, {method: "PUT",
     headers: {
       'Content-Type': "Application/json"
-    }, body: JSON.stringify({review, rating})}).then(res => res.JSON())
-    setMovies({movies})
+    }, body: JSON.stringify({completed, to_watch, review})}).then(res => res.JSON())
+    setWatchlist({watchlist})
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async function handleAddWatched(formInputs) {
+    try {
+      const watched = await fetch('http://localhost:3000/watchlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'Application/json'
+        },
+        body: JSON.stringify(formInputs)
+      }).then(res => res.json())
+
+      setWatchlist({ watched });
+      
+    } catch(error) {
+      console.log(error)
+    }
+  } 
+
+  async function handleDelete(listId) {
+    try {
+      const watchlist = await fetch(`$URL2/${listId}`, {
+        method: 'DELETE',
+      }).then(res => res.json());
+    
+    setWatchlist({ watchlist });
+
     } catch (error) {
       console.log(error)
     }
@@ -70,9 +101,12 @@ function App() {
       <div className="App">
       <Routes>
         <Route path='/' element={<Home movies={movies}/>}/>
-        <Route path='/movies/:id' element={<Movies movies={movies}/>} />
-        <Route path='/watchlist' element={<WatchList movies={movies}/>}/>
-        <Route path='/watching' element={<Watching movies={movies}/>}/>
+        <Route path='/movies/:id' element={<Movies movies={movies}/>} handleAddWatched={handleAddWatched}/>
+        <Route path='/watchlist' element={<WatchList movies={movies} 
+        handleDelete={handleDelete}
+        handleUpdate={handleUpdate}
+        watchlist={watchlist}/>}/>
+        <Route path='/watching' element={<Watching movies={movies} />}/>
         <Route path='/addmovies' element={<AddMovie handleAdd={handleAdd}/>}/>
       </Routes>
     </div>
