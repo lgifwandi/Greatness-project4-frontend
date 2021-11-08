@@ -1,4 +1,3 @@
-
 import './App.css';
 import {useEffect, useState} from 'react';
 import {Routes, Route} from 'react-router-dom';
@@ -8,24 +7,36 @@ import WatchList from './pages/WatchList';
 import Movies from './pages/Movies';
 import AddMovie from './pages/AddMovie';
 
-
-
 function App() {
   const [movies, setMovies] = useState(null);
+  const [watchlist, setWatchlist] = useState(null);
   const URL = "http://localhost:3000/movies";
+  const URL2 ='http://localhost:3000/watchlists';
 
   const getMovies = async () => {
     try {
-
     const movies = await fetch(URL).then(response => response.json())
-    setMovies(movies)
-
+    setMovies(movies);
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => getMovies(), []);
+  const getWatchList = async () => {
+    try {
+    const watchlist = await fetch(URL2).then(response => response.json())
+    setWatchlist(watchlist)
+      console.log(watchlist)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getMovies();
+    getWatchList();
+  }, []);
+
 
   async function handleAdd(formInputs) {
     try {

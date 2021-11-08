@@ -9,7 +9,7 @@ const Home = ({movies}) => {
     return( 
         <Wrapper>
         <Nav />
-            <h1>Your Movies</h1>
+            <h1>Movies</h1>
             {movies.map(movie => 
             (<Container key={movie.id}>
                 <Link to={`/movies/${movie.id}`}>
