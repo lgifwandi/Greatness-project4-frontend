@@ -8,7 +8,7 @@ import Movies from './pages/Movies';
 
 function App() {
   const [movies, setMovies] = useState(null);
-  const URL = 'http://localhost:3000/movies';
+  const URL = 'http://localhost:3000/movies/';
   
   const getMovies = async () => {
     try {
