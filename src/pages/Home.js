@@ -4,12 +4,12 @@ import {Wrapper, Container} from "./Home-styled";
 import Nav from "../components/Nav/Nav.js";
 
 const Home = ({movies}) => {
-
+    console.log(movies)
     const loaded = () => {
     return( 
         <Wrapper>
         <Nav />
-            <h1>Your Movies</h1>
+            <h1>Movies</h1>
             {movies.map(movie => 
             (<Container key={movie.id}>
                 <Link to={`/movies/${movie.id}`}>
