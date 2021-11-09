@@ -1,35 +1,38 @@
+import { Link } from "react-router-dom";
+import { Wrapper, Container } from "./Home-styled";
+import { useEffect, useState } from "react";
 
-import {Link} from 'react-router-dom';
-import {Wrapper, Container} from "./Home-styled";
-import Nav from "../components/Nav/Nav.js";
-
-const Home = ({movies, handleDeleteMovie}) => {
-    console.log(movies)
-    const loaded = () => {
-    return( 
-        <Wrapper>
-        <Nav />
-            <h1>Movies</h1>
-            {movies.map(movie => 
-            (<Container key={movie.id}>
-                <Link to={`/movies/${movie.id}`}>
-                    <img src={movie.image} alt={movie.title}/>
-                    <button onClick={() => handleDeleteMovie(movie.id)} >DELETE MOVIE</button>
-                </Link>
-            </Container>)
-        )}
-        </Wrapper>
-    )
-    }
+const Home = ({ movies }) => {
+  const loaded = () => {
+    return (
+      <Wrapper>
+        <h1>Movies</h1>
+        <div className="movie-grid">
+          {movies.map((movie) => (
+            <Container key={movie.id}>
+              <Link to={`/movies/${movie.id}`}>
+                <div className="movie-hov">
+                  <div className="bck-shadow">b</div>
+                  <img
+                    className="movie-img"
+                    src={movie.image}
+                    alt={movie.title}
+                  />
+                </div>
+              </Link>
+            </Container>
+          ))}
+        </div>
+      </Wrapper>
+    );
+  };
 
 
   const loading = () => {
     return <h1>Loading...</h1>;
   };
 
-
-    return movies ? loaded() : loading();
-
+  return movies ? loaded() : loading();
 };
 
 export default Home;
