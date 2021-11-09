@@ -8,12 +8,12 @@ import Movies from './pages/Movies';
 import AddMovie from './pages/AddMovie';
 
 function App() {
-  const [movies, setMovies] = useState(null);
-  const [watchlist, setWatchlist] = useState(null);
+  const [movies, setMovies] = useState();
+  const [watchlist, setWatchlist] = useState();
   const URL = "http://localhost:3000/movies";
   const URL2 ='http://localhost:3000/watchlists';
 
-  const getMovies = async () => {
+  useEffect(() => {async function getMovies(){
     try {
     const movies = await fetch(URL).then(response => response.json())
     setMovies(movies);
@@ -21,9 +21,10 @@ function App() {
     } catch (error) {
       console.log(error);
     }
-  };
+  } getMovies()
+}, [])
 
-  const getWatchList = async () => {
+  useEffect(() => {async function getWatchlist() {
     try {
     const watchlist = await fetch(URL2).then(response => response.json())
     setWatchlist(watchlist)
@@ -31,13 +32,8 @@ function App() {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  useEffect(() => {
-    getMovies();
-    getWatchList();
-  }, []);
-
+  } getWatchlist()
+}, [])
 
   async function handleAdd(formInputs) {
     try {
@@ -101,7 +97,7 @@ function App() {
       <div className="App">
       <Routes>
         <Route path='/' element={<Home movies={movies}/>}/>
-        <Route path='/movies/:id' element={<Movies movies={movies}/>} handleAddWatched={handleAddWatched}/>
+        <Route path='/movies/:id' element={<Movies movies={movies}handleAddWatched={handleAddWatched}/>}/>
         <Route path='/watchlist' element={<WatchList movies={movies} 
         handleDelete={handleDelete}
         handleUpdate={handleUpdate}

@@ -4,7 +4,7 @@ import {Wrapper, Container} from "./Home-styled";
 import Nav from "../components/Nav/Nav.js";
 
 const Home = ({movies}) => {
-
+    console.log(movies)
     const loaded = () => {
     return( 
         <Wrapper>
