@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import WatchedForm from "../components/WatchedForm";
 import UpdateMovieForm from "../components/UpdateMovieForm";
 
-const Movies = ({movies, handleAddWatched, handleDeleteMovie}) => {   
+const Movies = ({movies, handleAddWatched, handleDeleteMovie, handleMovieUpdate}) => {   
     const {id} = useParams();
     let movie = []
     console.log(movies);
@@ -26,7 +26,9 @@ const Movies = ({movies, handleAddWatched, handleDeleteMovie}) => {
 
            <WatchedForm id={id}handleAddWatched={handleAddWatched}/>
 
-           <UpdateMovieForm movie={movie}/>
+           <UpdateMovieForm movie={movie} handleMovieUpdate={handleMovieUpdate}/>
+
+           <button onClick={() => handleDeleteMovie(movie.id)} >Delete Movie</button>
            </div>
         </div>
     )
