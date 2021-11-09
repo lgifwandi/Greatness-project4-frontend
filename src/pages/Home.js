@@ -27,6 +27,7 @@ const Home = ({ movies }) => {
     );
   };
 
+
   const loading = () => {
     return <h1>Loading...</h1>;
   };

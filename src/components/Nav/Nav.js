@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 const Nav = () => {
   const links = {
     logo: {
-      title: "logo-name",
+      title: "MOVIES",
       link: "/",
     },
     home: {
@@ -20,7 +20,11 @@ const Nav = () => {
       title: "list",
       link: "/watchlist",
     },
-  };
+    addmovie: {
+      title: "add movie",
+      link: "/addmovies",
+    },
+};
 
   return (
     <Wrapper>
@@ -42,6 +46,11 @@ const Nav = () => {
           <li className="nav-links">
             <Link className="links" to={links.list.link}>
               {links.list.title}
+            </Link>
+          </li>
+          <li className="nav-links">
+            <Link className="links" to={links.addmovie.link}>
+              {links.addmovie.title}
             </Link>
           </li>
         </ul>
