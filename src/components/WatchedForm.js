@@ -5,8 +5,8 @@ const WatchedForm = ({handleAddWatched, id}) => {
     const [checkedToWatch, setCheckedToWatch] = useState(true)
     const [watchlistForm, setWatchlistForm] = useState(
         {
-            completed: {checkedComplete},
-            to_watch: {checkedToWatch},
+            completed: checkedComplete,
+            to_watch: checkedToWatch,
             movie_review: '',
             movie_id: id,
         }
@@ -15,9 +15,11 @@ const WatchedForm = ({handleAddWatched, id}) => {
 
     const handleChangeComplete = () => {
         setCheckedComplete(!checkedComplete)
+        console.log(checkedComplete)
     }
     const handleChangeToWatch = () => {
         setCheckedToWatch(!checkedToWatch)
+        console.log(checkedToWatch)
     }
     const handleChange = ((event) => {
         setWatchlistForm(prevState => ({
@@ -28,13 +30,14 @@ const WatchedForm = ({handleAddWatched, id}) => {
 
     const handleSubmit = ((event) => {
         event.preventDefault();
+        console.log(watchlistForm)
         handleAddWatched(watchlistForm)
         setWatchlistForm(
             {
-                completed: {checkedComplete},
-                to_watch: {checkedToWatch},
+                completed: checkedComplete,
+                to_watch: checkedToWatch,
                 movie_review: '',
-                movie_id: '',
+                movie_id: id,
             }
         )
         

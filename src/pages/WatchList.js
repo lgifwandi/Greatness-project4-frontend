@@ -11,7 +11,7 @@ const WatchList = ({movies, watchlist, handleDelete}) => {
     return(
         <div>
         <h1>Watch List</h1>
-        {listMovie.map((item) => (
+        {   listMovie.map((item) => (
                 <div key={item.id}>
                     <Link to={`/movies/${item.id}`}>
                     <img src={item.image} alt={item.title}/>
