@@ -1,14 +1,24 @@
-const WatchList = (props) => {
-    console.log(props.movies)
-    {props.movies.map((movie) => {
-        if(movie.watchlists) {
-            console.log(movie)
-        }
+import {Link} from 'react-router-dom';
+const WatchList = ({movies, watchlist, handleDelete}) => {
+
+    let listMovie = [];
+   {movies.map((movie) => {
+       if(movie.watchlists[0]) {
+           listMovie.push(movie)
+       }
     })}
     return(
         <div>
         <h1>Watch List</h1>
-        <button onClick={() => props.handleDelete(props.watchlist.id)} >X</button>
+        {listMovie.map((item) => (
+                <div key={item.id}>
+                    <Link to={`/movies/${item.id}`}>
+                    <img src={item.image} alt={item.title}/>
+                    </Link>
+                    <button onClick={() => handleDelete(watchlist.id)} >X</button>
+                </div>
+            ))} 
+        
         </div>
     )
 };

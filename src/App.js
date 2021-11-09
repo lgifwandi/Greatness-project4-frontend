@@ -102,7 +102,7 @@ function App() {
         handleDelete={handleDelete}
         handleUpdate={handleUpdate}
         watchlist={watchlist}/>}/>
-        <Route path='/watching' element={<Watching movies={movies} />}/>
+        <Route path='/watching' element={<Watching movies={movies} watchlist={watchlist}/>}/>
         <Route path='/addmovies' element={<AddMovie handleAdd={handleAdd}/>}/>
       </Routes>
     </div>

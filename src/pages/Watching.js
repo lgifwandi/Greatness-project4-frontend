@@ -1,19 +1,24 @@
 import {Link} from 'react-router-dom';
 
-const Watching = (props) => {
-    const movies = props.movies;
+const Watching = ({movies}) => {
    console.log(movies)
+   let listMovie = [];
+   {movies.map((movie) => {
+       if(movie.watchlists[0]) {
+           listMovie.push(movie)
+       }
+    })}
+    console.log(listMovie)
     return(
         <div>
             <h1>Watching</h1>
-            {movies.map((movie) => {
-                if (movie.watchlists.completed) {
-                    <div key={movie.id}>
-                        <Link to={`/movies/${movie.id}`}>
-                        <img src={movie.image} alt={movie.title}/></Link>
-                    </div>
-                }
-            })}
+            {listMovie.map((item) => (
+                <div key={item.id}>
+                    <Link to={`/movies/${item.id}`}>
+                    <img src={item.image} alt={item.title}/>
+                    </Link>
+                </div>
+            ))} 
         </div>
     )
 }
