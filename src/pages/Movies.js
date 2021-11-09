@@ -1,8 +1,7 @@
 import { useParams } from "react-router";
 import WatchedForm from "../components/WatchedForm";
 
-const Movies = ({movies, handleAddWatched}) => {   
-    console.log(handleAddWatched)
+const Movies = ({movies, handleAddWatched, handleDeleteMovie}) => {   
     const {id} = useParams();
     let movie = []
     console.log(movies);
@@ -22,7 +21,7 @@ const Movies = ({movies, handleAddWatched}) => {
             <h3>{movie.release_date}</h3>
             <h3>{movie.genre}</h3>
 
-           <WatchedForm handleAddWatched={handleAddWatched}/>
+           <WatchedForm id={id}handleAddWatched={handleAddWatched}/>
         </div>
     )
 };

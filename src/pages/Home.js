@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {Wrapper, Container} from "./Home-styled";
 import Nav from "../components/Nav/Nav.js";
 
-const Home = ({movies}) => {
+const Home = ({movies, handleDeleteMovie}) => {
     console.log(movies)
     const loaded = () => {
     return( 
@@ -14,6 +14,7 @@ const Home = ({movies}) => {
             (<Container key={movie.id}>
                 <Link to={`/movies/${movie.id}`}>
                     <img src={movie.image} alt={movie.title}/>
+                    <button onClick={() => handleDeleteMovie(movie.id)} >DELETE MOVIE</button>
                 </Link>
             </Container>)
         )}
