@@ -20,4 +20,48 @@ body {
   color: var(--white);
 }
 
+.show-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10vh;
+}
+
+.show-text {
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 50px;
+}
+
+.movie-title {
+  padding-bottom: .50em;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 40px;
+  max-width: 400px;
+}
+
+.movie-desc {
+  font-family: 'Playfair Display', serif;
+  font-weight: 100;
+  font-size: 18px;
+  line-height: inherit;
+  margin-bottom: 0.625em;
+  max-width: 400px;
+}
+
+.movie-rating {
+  margin-bottom: 0.3125em;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.movie-release {
+  margin-bottom: 0.3125em;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.movie-genre {
+  margin-bottom: 0.3125em; 
+  font-family: 'Work Sans', sans-serif; 
+}
+
 
