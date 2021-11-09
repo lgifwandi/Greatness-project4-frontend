@@ -2,17 +2,18 @@ import {Link} from 'react-router-dom';
 
 const Watching = ({movies}) => {
    console.log(movies)
-   let listMovie = [];
+   let watchedMovie = [];
    {movies.map((movie) => {
        if(movie.watchlists[0]) {
-           listMovie.push(movie)
+           if (movie.watchlists[0].completed)
+           watchedMovie.push(movie)
        }
     })}
-    console.log(listMovie)
+   
     return(
         <div>
-            <h1>Watching</h1>
-            {listMovie.map((item) => (
+            <h1>Watched</h1>
+            {watchedMovie.map((item) => (
                 <div key={item.id}>
                     <Link to={`/movies/${item.id}`}>
                     <img src={item.image} alt={item.title}/>

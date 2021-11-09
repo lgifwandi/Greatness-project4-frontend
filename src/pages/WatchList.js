@@ -1,9 +1,10 @@
 import {Link} from 'react-router-dom';
 const WatchList = ({movies, watchlist, handleDelete}) => {
-
+    
     let listMovie = [];
    {movies.map((movie) => {
        if(movie.watchlists[0]) {
+           if (movie.watchlists[0].to_watch)
            listMovie.push(movie)
        }
     })}
