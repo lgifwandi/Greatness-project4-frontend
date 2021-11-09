@@ -93,11 +93,25 @@ function App() {
     }
   }
 
+  async function handleDeleteMovie(movieId) {
+    try {
+      const watchlist = await fetch(`${URL}/${movieId}`, {
+        method: 'DELETE',
+      }).then(res => res.json());
+    
+    setMovies({ movies });
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
       <div className="App">
       <Routes>
-        <Route path='/' element={<Home movies={movies}/>}/>
-        <Route path='/movies/:id' element={<Movies movies={movies}handleAddWatched={handleAddWatched}/>}/>
+        <Route path='/' element={<Home movies={movies}
+        handleDeleteMovie={handleDeleteMovie}/>}/>
+        <Route path='/movies/:id' element={<Movies movies={movies} handleAddWatched={handleAddWatched}  />}/>
         <Route path='/watchlist' element={<WatchList movies={movies} 
         handleDelete={handleDelete}
         handleUpdate={handleUpdate}
