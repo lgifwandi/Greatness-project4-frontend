@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   nav {
     top: 0;
-    position: fixed;
     height: 4rem;
     background-color: #0a192f;
-    width: 100%;
+    width: 100vw;
     display: flex;
+    justify-content: space-evenly;
     justify-content: flex-end;
     align-items: center;
   }
@@ -31,19 +31,17 @@ export const Wrapper = styled.div`
   #logo:hover {
     background-color: rgba(8, 247, 254, 0.2);
   }
-  a {
+  .links {
+    text-transform: uppercase;
     font-weight: 400;
     border-radius: 25px;
     color: #c5d9e2;
     padding: 0px;
     display: inline-block;
     font-size: 1.05rem;
-    text-transform: ;
+    text-transform: uppercase;
     text-decoration: none;
     transition: 0.7s ease;
-  }
-  .links {
-    text-transform: uppercase;
   }
   .links:hover {
     color: #4cc9f0;
