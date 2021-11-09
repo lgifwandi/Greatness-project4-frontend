@@ -139,40 +139,17 @@ function App() {
     <div className="App">
       <Nav />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home movies={movies} handleDeleteMovie={handleDeleteMovie} />
-          }
-        />
-        <Route
-          path="/movies/:id"
-          element={
-            <Movies movies={movies} handleAddWatched={handleAddWatched} />
-          }
-        />
-        <Route
-          path="/watchlist"
-          element={
-            <WatchList
-              movies={movies}
-              handleDelete={handleDelete}
-              handleUpdate={handleUpdate}
-              watchlist={watchlist}
-            />
-          }
-        />
-        <Route
-          path="/watching"
-          element={
-            <Watching
-              movies={movies}
-              watchlist={watchlist}
-              handleUpdate={handleUpdate}
-            />
-          }
-        />
-        <Route path="/addmovies" element={<AddMovie handleAdd={handleAdd} />} />
+        <Route path='/' element={<Home movies={movies}
+        />}/>
+        <Route path='/movies/:id' element={<Movies movies={movies} handleAddWatched={handleAddWatched} 
+        handleMovieUpdate={handleMovieUpdate} 
+        handleDeleteMovie={handleDeleteMovie}/>}/>
+        <Route path='/watchlist' element={<WatchList movies={movies} 
+        handleDelete={handleDelete}
+        handleUpdate={handleUpdate}
+        watchlist={watchlist}/>}/>
+        <Route path='/watching' element={<Watching movies={movies} watchlist={watchlist} handleUpdate={handleUpdate}/>}/>
+        <Route path='/addmovies' element={<AddMovie handleAdd={handleAdd}/>}/
       </Routes>
     </div>
   );
