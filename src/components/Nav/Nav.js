@@ -1,5 +1,6 @@
 import React from "react";
 import { Wrapper } from "./styles";
+import {Link} from 'react-router-dom';
 
 const Nav = () => {
   const links = {
@@ -12,7 +13,7 @@ const Nav = () => {
       link: "/",
     },
     watching: {
-      title: "watching",
+      title: "watched",
       link: "/watching",
     },
     list: {
@@ -24,24 +25,24 @@ const Nav = () => {
   return (
     <Wrapper>
       <nav>
-        <a id="logo" href="/">
+        <Link id="logo" to="/">
           {links.logo.title}
-        </a>
+        </Link>
         <ul className="list">
           <li className="nav-links">
-            <a className="links" href={links.home.link}>
+            <Link className="links" to={links.home.link}>
               {links.home.title}
-            </a>
+            </Link>
           </li>
           <li className="nav-links">
-            <a className="links" href={links.watching.link}>
+            <Link className="links" to={links.watching.link}>
               {links.watching.title}
-            </a>
+            </Link>
           </li>
           <li className="nav-links">
-            <a className="links" href={links.list.link}>
+            <Link className="links" to={links.list.link}>
               {links.list.title}
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
