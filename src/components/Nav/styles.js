@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
     border-radius: 20px;
     color: #4cc9f0;
     position: absolute;
-    left: 0;
+    left: 2rem;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;

@@ -6,6 +6,7 @@ import Watching from "./pages/Watching";
 import WatchList from "./pages/WatchList";
 import Movies from "./pages/Movies";
 import AddMovie from "./pages/AddMovie";
+import Nav from "./components/Nav/Nav";
 
 function App() {
   const [movies, setMovies] = useState();
@@ -56,14 +57,15 @@ function App() {
 
   async function handleUpdate(listForm) {
     try {
-
-      const {completed, to_watch, review, id} = listForm;
-      const watchlist = await fetch(`${URL2}/${id}`, {method: "PUT",
-    headers: {
-      'Content-Type': "Application/json"
-    }, body: JSON.stringify({completed, to_watch, review})}).then(res => res.json())
-    setWatchlist({watchlist})
-
+      const { completed, to_watch, review, id } = listForm;
+      const watchlist = await fetch(`${URL2}/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "Application/json",
+        },
+        body: JSON.stringify({ completed, to_watch, review }),
+      }).then((res) => res.json());
+      setWatchlist({ watchlist });
     } catch (error) {
       console.log(error);
     }
@@ -71,24 +73,31 @@ function App() {
 
   async function handleMovieUpdate(form) {
     try {
-      const {title, description, movie_rating, release_date, genre, id} = form;
-      const watchlist = await fetch(`${URL}/${id}`, {method: "PUT",
-    headers: {
-      'Content-Type': "Application/json"
-    }, body: JSON.stringify({title, description, movie_rating, release_date, genre})}).then(res => res.json())
-    setMovies({movies})
+      const { title, description, movie_rating, release_date, genre, id } =
+        form;
+      const watchlist = await fetch(`${URL}/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "Application/json",
+        },
+        body: JSON.stringify({
+          title,
+          description,
+          movie_rating,
+          release_date,
+          genre,
+        }),
+      }).then((res) => res.json());
+      setMovies({ movies });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
-
-
   async function handleAddWatched(formInputs) {
     try {
-
       const watched = await fetch(URL2, {
-        method: 'POST',
+        method: "POST",
 
         headers: {
           "Content-Type": "Application/json",
@@ -117,30 +126,53 @@ function App() {
   async function handleDeleteMovie(movieId) {
     try {
       const watchlist = await fetch(`${URL}/${movieId}`, {
-        method: 'DELETE',
-      }).then(res => res.json());
-    
-    setMovies({ movies });
+        method: "DELETE",
+      }).then((res) => res.json());
 
+      setMovies({ movies });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
   return (
     <div className="App">
+      <Nav />
       <Routes>
-
-        <Route path='/' element={<Home movies={movies}
-        handleDeleteMovie={handleDeleteMovie}/>}/>
-        <Route path='/movies/:id' element={<Movies movies={movies} handleAddWatched={handleAddWatched}  />}/>
-        <Route path='/watchlist' element={<WatchList movies={movies} 
-        handleDelete={handleDelete}
-        handleUpdate={handleUpdate}
-        watchlist={watchlist}/>}/>
-        <Route path='/watching' element={<Watching movies={movies} watchlist={watchlist} handleUpdate={handleUpdate}/>}/>
-        <Route path='/addmovies' element={<AddMovie handleAdd={handleAdd}/>}/>
-
+        <Route
+          path="/"
+          element={
+            <Home movies={movies} handleDeleteMovie={handleDeleteMovie} />
+          }
+        />
+        <Route
+          path="/movies/:id"
+          element={
+            <Movies movies={movies} handleAddWatched={handleAddWatched} />
+          }
+        />
+        <Route
+          path="/watchlist"
+          element={
+            <WatchList
+              movies={movies}
+              handleDelete={handleDelete}
+              handleUpdate={handleUpdate}
+              watchlist={watchlist}
+            />
+          }
+        />
+        <Route
+          path="/watching"
+          element={
+            <Watching
+              movies={movies}
+              watchlist={watchlist}
+              handleUpdate={handleUpdate}
+            />
+          }
+        />
+        <Route path="/addmovies" element={<AddMovie handleAdd={handleAdd} />} />
       </Routes>
     </div>
   );
