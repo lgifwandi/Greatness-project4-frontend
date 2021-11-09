@@ -21,7 +21,7 @@ const Movies = ({movies, handleAddWatched, handleDeleteMovie}) => {
             <h3>{movie.release_date}</h3>
             <h3>{movie.genre}</h3>
 
-           <WatchedForm handleAddWatched={handleAddWatched}/>
+           <WatchedForm id={id}handleAddWatched={handleAddWatched}/>
         </div>
     )
 };

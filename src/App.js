@@ -50,9 +50,9 @@ function App() {
     }
   }
 
-  async function handleUpdate(reviewForm) {
+  async function handleUpdate(listForm) {
     try {
-      const {completed, to_watch, review, id} = reviewForm;
+      const {completed, to_watch, review, id} = listForm;
       const watchlist = await fetch(`${URL2}/${id}`, {method: "PUT",
     headers: {
       'Content-Type': "Application/json"
@@ -65,7 +65,7 @@ function App() {
 
   async function handleAddWatched(formInputs) {
     try {
-      const watched = await fetch('http://localhost:3000/watchlist', {
+      const watched = await fetch(URL2, {
         method: 'POST',
         headers: {
           'Content-Type': 'Application/json'
