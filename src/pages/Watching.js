@@ -1,15 +1,17 @@
 import {Link} from 'react-router-dom';
 
-const Watching = ({movies}) => {
+const Watching = ({movies, watchlists}) => {
    console.log(movies)
-   let watchedMovie = [];
+   let watchedMovie = []
+   let review = []
    {movies.map((movie) => {
        if(movie.watchlists[0]) {
            if (movie.watchlists[0].completed)
            watchedMovie.push(movie)
+           review.push(movie.watchlists[0].movie_review)
        }
     })}
-   
+    console.log(review)
     return(
         <div>
             <h1>Watched</h1>
@@ -18,6 +20,9 @@ const Watching = ({movies}) => {
                     <Link to={`/movies/${item.id}`}>
                     <img src={item.image} alt={item.title}/>
                     </Link>
+                    <h2>{item.title}</h2>
+                    <h3>Review</h3>
+                    <p>{review[0]}</p>
                 </div>
             ))} 
         </div>
