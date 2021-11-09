@@ -27,6 +27,7 @@ export const Wrapper = styled.div`
     letter-spacing: 3px;
     text-transform: uppercase;
     border: #08f7fe 2.5px solid;
+    text-decoration: none;
   }
   #logo:hover {
     background-color: rgba(8, 247, 254, 0.2);
