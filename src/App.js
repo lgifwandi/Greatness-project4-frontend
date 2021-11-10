@@ -149,8 +149,8 @@ function App() {
         handleUpdate={handleUpdate}
         watchlist={watchlist}/>}/>
         <Route path='/watching' element={<Watching movies={movies} watchlist={watchlist} handleUpdate={handleUpdate}/>}/>
-        <Route path='/addmovies' element={<AddMovie handleAdd={handleAdd}/>}/
-      </Routes>
+        <Route path='/addmovies' element={<AddMovie handleAdd={handleAdd}/>}/>
+      </ Routes>
     </div>
   );
 }
