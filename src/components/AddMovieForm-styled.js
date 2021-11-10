@@ -17,7 +17,6 @@ export const Form = styled.div`
             padding: 3px;
             display: block;
             margin: 25px;
-            text-transform: uppercase;
             margin-left: auto;
             margin-right: auto;
             width: 20vw;
