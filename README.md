@@ -1,6 +1,6 @@
 # Movie WatchList
 
-A fullstack app using a react front end and a ruby on rails backend. Users can add movies to a have watched list and a want to watch list. It also allows them to rate and review movies they have seen. 
+A fullstack app using a react front end and a ruby on rails backend. Users can add movies to a have watched list and a want to watch list. 
 
 ## Collaborators
 
